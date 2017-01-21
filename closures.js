@@ -14,19 +14,11 @@ var outer = function(){
 closure over the name variable. Invoke outer saving the return value into
 another variable called 'inner'. */
 
-// Code Here
+var inner = outer();
 
 //Once you do that, invoke inner.
 
-//Code Here
-
-
-
-
-
-
-
-
+inner();
 
 
 /******************************************************************************\
@@ -47,16 +39,12 @@ var callFriend = function(){
 Create a makeCall function that when invoked logs 'Calling Jake at 435-215-9248'
 in your console. */
 
-  //Code Here
+function makeCall() {
+  var friend = callFriend("435-215-9248");
+  console.log(friend);
+}
 
-
-
-
-
-
-
-
-
+makeCall();
 
 /******************************************************************************\
 	#PROBLEM-03
@@ -66,23 +54,21 @@ in your console. */
 /* Write a function called makeCounter that makes the following code work
 properly. */
 
-//Code Here
+function makeCounter() {
+  var num = 0;
+  return function () {
+    num += 1;
+    console.log("num>>" + num);
+    return num;
+  };
+}
 
 //Uncomment this once you make your function
-//   var count = makeCounter();
-//   count(); // 1
-//   count(); // 2
-//   count(); // 3
-//   count(); // 4
-
-
-
-
-
-
-
-
-
+  var count = makeCounter();
+  count(); // 1
+  count(); // 2
+  count(); // 3
+  count(); // 4
 
 /******************************************************************************\
 	#PROBLEM-04
@@ -96,18 +82,38 @@ function is responsible for decrementing the value by one. You will need to use
 the module pattern to achieve this. */
 
 function counterFactory(value) {
-
-  // Code here.
-
+  var count = value;
+  function changeBy(val) {
+    count += val;
+  }
 
   return {
+    inc : function() {
+      changeBy(1);
+      return count;
+    },
+    dec : function() {
+      changeBy(-1);
+      return count;
+    },
+    value: function() {
+      console.log(count);
+      return count;
+    }
   }
 }
 
 
 counter = counterFactory(10);
+counter.inc();
+// counter.value();
+counter.inc();
+counter.dec();
+counter.dec();
 
-
+var c = counterFactory(5);
+		c.inc(); //6
+		c.inc(); //7
 
 
 
