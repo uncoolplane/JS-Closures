@@ -41,7 +41,7 @@ in your console. */
 
 function makeCall() {
   var friend = callFriend("435-215-9248");
-  console.log(friend);
+  // console.log(friend);
 }
 
 makeCall();
@@ -58,7 +58,7 @@ function makeCounter() {
   var num = 0;
   return function () {
     num += 1;
-    console.log("num>>" + num);
+    // console.log("num>>" + num);
     return num;
   };
 }
@@ -103,7 +103,6 @@ function counterFactory(value) {
   }
 }
 
-
 counter = counterFactory(10);
 counter.inc();
 // counter.value();
@@ -114,13 +113,6 @@ counter.dec();
 var c = counterFactory(5);
 		c.inc(); //6
 		c.inc(); //7
-
-
-
-
-
-
-
 
 /******************************************************************************\
 	#PROBLEM-05
@@ -134,23 +126,15 @@ function motivation(firstname, lastname){
 
   var welcomeText = 'You\'re doing awesome, keep it up ';
 
-  // code message function here.
-
+  function message() {
+    return "You're doing awesome, keep it up " + firstname + " " + lastname + ".";
+  }
 
   //Uncommment this to return the value of your invoked message function
-  //return message();
-
+  return message();
 }
 
 motivation('Billy', 'Bob'); // 'Your doing awesome keep it up Billy Bob
-
-
-
-
-
-
-
-
 
 
 /******************************************************************************\
@@ -177,22 +161,13 @@ var module = (function() {
 	// outside our lexical scope
 
   return {
-    // Code here.
+    publicMethod : privateMethod
   };
 
 })();
 
 // Uncomment this after you create your public method
-//   module.publicMethod();
-
-
-
-
-
-
-
-
-
+  module.publicMethod();
 
 /******************************************************************************\
 	#PROBLEM-07
@@ -206,20 +181,17 @@ then 3, etc). Run this code in your console to see what the output is. */
 // To make this code work you will need to create a new scope for every iteration.
 function timeOutCounter() {
   for (var i = 0; i <= 5; i++) {
-    setTimeout(function() {
+    setTimeout(/*function() {
       console.log(i);
-    }, i * 1000)
+    }*/newScope(i), i * 1000)
   }
 
   function newScope(i) {
-    console.log(i)
+    console.log(i);
   }
 }
+
 timeOutCounter();
-
-
-
-
 
 
 /******************************************************************************\
