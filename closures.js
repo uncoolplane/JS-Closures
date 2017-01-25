@@ -197,9 +197,6 @@ timeOutCounter();
 /******************************************************************************\
 	#PROBLEM-08
 \******************************************************************************/
-
-var funcArray = [];
-
 /*
   Make the following code work
 
@@ -212,3 +209,13 @@ var funcArray = [];
 
   *Hint: Don't let this fool you. Break down what's really happening here.
 */
+var funcArray = [];
+function populate() {
+  for(var i = 0; i < 6; i++) {
+    funcArray.push(arrFun(i));
+  }
+}
+
+function arrFun(i) {
+  return function () {return i;}
+}
